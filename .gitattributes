@@ -1,0 +1,8 @@
+# from: https://github.com/hpaluch/dsPIC33fj-tutorial/blob/master/.gitignore
+# MPLAB files that use Unix EOL
+Makefile text eol=lf
+*.mc3 text eol=lf
+# use Unix LF even for git files
+README.md text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf

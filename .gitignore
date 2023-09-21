@@ -1,0 +1,17 @@
+# from: https://github.com/hpaluch/dsPIC33fj-tutorial/blob/master/.gitignore
+*~
+*.bak
+*.tmp
+*.swp
+
+.generated_files/
+private/
+dist/
+build/
+disassembly/
+Package-*
+Makefile-*
+# files created when Tracing is enabled
+*.log
+*.inx
+
