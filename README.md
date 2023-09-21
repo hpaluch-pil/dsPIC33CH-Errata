@@ -41,6 +41,8 @@ What it does:
 - Slave Core
   - 8 Mhz external Clock, 200 MHz (100 MIPS) Core clock
   - debug messages on UART (`RC10_RXB` PIC Input, `RC11_TXB` PIC Output)
+    - please use these `COMx` port settings on your PC: Speed 115200 Baud, 8-bit data, 1 stop bit,
+      no parity, no flow control
   - toggles LED2 around every 1s using main loop Delay
   - rotating RGB LED around every second
   - toggle `RC7_ANA` on every CCP1 interrupt
@@ -69,6 +71,11 @@ MC=3 INT1=24575 INT2=48921
  INT1SP=0x1222 INT2SP=0x122a MAXSP=0x124e SPLIM=0x4ff0
 !2
 ```
+
+The `!2` is trap message from customized `ErrataSlave.X/mcc_generated_files/traps.c`,
+where `!` means Trap occurred and `2` is Error code - in this case `AddressError`.
+Also red LED2 should stop blinking and RGB LED should stop rotating (currently accidentally on Green, but
+it is just coincidence).
 
 # Resources
 
