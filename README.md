@@ -59,23 +59,28 @@ I get trap
 ```
 TRAPS_ADDRESS_ERR = 2, /** Address error Trap vector */
 ```
-In 3 seconds - example of UART output:
+
+This is modified version where trap occurs significantly faster:
 ```
-SLAVE main:173 starting v1.00
+SLAVE main:189 starting v1.01
 SPLIM=20464 (0x4ff0)
-MC=1 INT1=8191 INT2=16300
- INT1SP=0x1224 INT2SP=0x1206 MAXSP=0x1246 SPLIM=0x4ff0
-MC=2 INT1=16383 INT2=32610
- INT1SP=0x1226 INT2SP=0x1206 MAXSP=0x124e SPLIM=0x4ff0
-MC=3 INT1=24575 INT2=48921
- INT1SP=0x1222 INT2SP=0x122a MAXSP=0x124e SPLIM=0x4ff0
 !2
 ```
+Before Main loop debug messages get chance...
 
 The `!2` is trap message from customized `ErrataSlave.X/mcc_generated_files/traps.c`,
 where `!` means Trap occurred and `2` is Error code - in this case `AddressError`.
 Also red LED2 should stop blinking and RGB LED should stop rotating (currently accidentally on Green, but
 it is just coincidence).
+
+And here is Analyzer output:
+
+![AddressError trap on Analyzer](assets/ad2-errata-dio-trap.gif)
+
+And `Digilent Analog Discovery 2` analyzer Workspace file:
+
+- [assets/dsPIC33CH-Curiosity-errata-dio.dwf3work](assets/dsPIC33CH-Curiosity-errata-dio.dwf3work)
+
 
 # Resources
 
