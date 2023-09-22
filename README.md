@@ -1,8 +1,8 @@
 # dsPIC33CH ISR/REPEAT errata
 
-Attempt to reproduce dsPIC33CH Slave core Errata, where
-it may corrupt stack (by repeating entry instructions like - PUSH) or 
-abort early REPEAT instruction leading to unexpected results.
+Attempt to reproduce dsPIC33CH Slave core Errata, where it may corrupt stack
+(by repeating entry instructions like - PUSH) or abort early REPEAT instruction
+leading to unexpected results.
 
 Errata is available in this document:
 - https://ww1.microchip.com/downloads/en/DeviceDoc/dsPIC33CH512MP508-Family-Silicon-Errata-and-Data-Sheet-Clarification-DS80000805K.pdf
@@ -12,8 +12,9 @@ Status:
 
 > WARNING!
 >
-> I think that this AddressError trap is because of Hardware error described in errata.
-> However that it is still chance that it is not the case and that it is caused by some bug in my program(!).
+> I _think_ that this AddressError trap is because of Hardware error described in errata.
+> However there is still chance that it is not the case and that it is caused by some bug
+> in my program(!).
 >
 > Please consider all content here WITHOUT ANY WARRANTY!
 
@@ -82,6 +83,15 @@ The `!2` is trap message from customized `ErrataSlave.X/mcc_generated_files/trap
 where `!` means Trap occurred and `2` is Error code - in this case `AddressError`.
 Also red LED2 should stop blinking and RGB LED should stop rotating (currently accidentally on Green, but
 it is just coincidence).
+
+# Workaround
+
+We may activate workarounds from Errata:
+- set `repeat_nstdis` (disables nested interrupts on REPEAT - less impact on latency)
+  or `repeat_gie` (disables globally all interrupts on REPEAT - more impact on latency) in:
+- Project `ErrataSlave` -> Properties -> Conf -> XC16 -> xc16-gcc ->
+  Option Categories: `Preprocessing and Messages` -> `Errata` (put `repeat_nstdis` or
+  `repeat_gie` here and Rebuild and Program dsPIC).
 
 # Resources
 
