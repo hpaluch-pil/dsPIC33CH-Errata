@@ -55,6 +55,12 @@ When:
 - CCP1 interrupt frequency is around 10 kHz
 - CCP2 interrupt frequency is around 100 kHz
 
+> NOTE:
+>
+> Please look also at
+> branch [br-faster-trap](https://github.com/hpaluch-pil/dsPIC33CH-Errata/tree/br-faster-trap)
+> Where the code trigger trap even faster and where is also Logic Analyzer output.
+
 I get trap
 ```
 TRAPS_ADDRESS_ERR = 2, /** Address error Trap vector */
