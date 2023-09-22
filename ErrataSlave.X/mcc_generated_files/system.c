@@ -48,18 +48,18 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
+#include "uart1.h"
 #include "sccp1_tmr.h"
+#include "sccp2_tmr.h"
+#include "master.h"
 #include "interrupt_manager.h"
 #include "traps.h"
-#include "uart1.h"
-#include "master.h"
-#include "sccp2_tmr.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
     MASTER_Initialize();
     SCCP1_TMR_Initialize();
     SCCP2_TMR_Initialize();

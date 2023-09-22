@@ -130,7 +130,7 @@
 #pragma config CPRB7 = MSTR    //Pin RB7 Ownership Bits->Main core owns pin.
 #pragma config CPRB8 = MSTR    //Pin RB8 Ownership Bits->Main core owns pin.
 #pragma config CPRB9 = MSTR    //Pin RB9 Ownership Bits->Main core owns pin.
-#pragma config CPRB10 = MSTR    //Pin RB10 Ownership Bits->Main core owns pin.
+#pragma config CPRB10 = SLV1    //Pin RB10 Ownership Bits->Secondary core owns pin.
 #pragma config CPRB11 = MSTR    //Pin RB11 Ownership Bits->Main core owns pin.
 #pragma config CPRB12 = MSTR    //Pin RB12 Ownership Bits->Main core owns pin.
 #pragma config CPRB13 = MSTR    //Pin RB13 Ownership Bits->Main core owns pin.
@@ -141,7 +141,7 @@
 #pragma config CPRC0 = MSTR    //Pin RC0 Ownership Bits->Main core owns pin.
 #pragma config CPRC1 = MSTR    //Pin RC1 Ownership Bits->Main core owns pin.
 #pragma config CPRC2 = MSTR    //Pin RC2 Ownership Bits->Main core owns pin.
-#pragma config CPRC3 = MSTR    //Pin RC3 Ownership Bits->Main core owns pin.
+#pragma config CPRC3 = SLV1    //Pin RC3 Ownership Bits->Secondary core owns pin.
 #pragma config CPRC4 = MSTR    //Pin RC4 Ownership Bits->Main core owns pin.
 #pragma config CPRC5 = MSTR    //Pin RC5 Ownership Bits->Main core owns pin.
 #pragma config CPRC6 = MSTR    //Pin RC6 Ownership Bits->Main core owns pin.
@@ -159,10 +159,10 @@
 #pragma config CPRD0 = MSTR    //Pin RD0 Ownership Bits->Main core owns pin.
 #pragma config CPRD1 = MSTR    //Pin RD1 Ownership Bits->Main core owns pin.
 #pragma config CPRD2 = MSTR    //Pin RD2 Ownership Bits->Main core owns pin.
-#pragma config CPRD3 = MSTR    //Pin RD3 Ownership Bits->Main core owns pin.
+#pragma config CPRD3 = SLV1    //Pin RD3 Ownership Bits->Secondary core owns pin.
 #pragma config CPRD4 = SLV1    //Pin RD4 Ownership Bits->Secondary core owns pin.
 #pragma config CPRD5 = SLV1    //Pin RD5 Ownership Bits->Secondary core owns pin.
-#pragma config CPRD6 = MSTR    //Pin RD6 Ownership Bits->Main core owns pin.
+#pragma config CPRD6 = SLV1    //Pin RD6 Ownership Bits->Secondary core owns pin.
 #pragma config CPRD7 = SLV1    //Pin RD7 Ownership Bits->Secondary core owns pin.
 #pragma config CPRD8 = MSTR    //Pin RD8 Ownership Bits->Main core owns pin.
 #pragma config CPRD9 = MSTR    //Pin RD9 Ownership Bits->Main core owns pin.
@@ -202,16 +202,16 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
-#include "slave_typedef.h"
-#include "slave1.h"
 #include "interrupt_manager.h"
 #include "traps.h"
+#include "slave_typedef.h"
+#include "slave1.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    CLOCK_Initialize();
     INTERRUPT_Initialize();
+    CLOCK_Initialize();
     SLAVE1_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);

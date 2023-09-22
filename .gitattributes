@@ -6,3 +6,8 @@ Makefile text eol=lf
 README.md text eol=lf
 .gitignore text eol=lf
 .gitattributes text eol=lf
+# 
+# these binaries are so small that we don't use LFS (yet)
+*.gif binary
+*.dwf3work binary
+
