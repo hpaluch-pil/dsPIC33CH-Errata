@@ -114,6 +114,7 @@ void ERROR_HANDLER _StackError(void)
 /** Address error Trap vector**/
 void ERROR_HANDLER _AddressError(void)
 {
+    IO_RB7_SetHigh();
     INTCON1bits.ADDRERR = 0;  //Clear the trap flag
     TRAPS_halt_on_error(TRAPS_ADDRESS_ERR);
 }

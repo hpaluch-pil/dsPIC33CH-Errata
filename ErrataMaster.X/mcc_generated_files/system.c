@@ -135,7 +135,7 @@
 #pragma config CPRB12 = MSTR    //Pin RB12 Ownership Bits->Main core owns pin.
 #pragma config CPRB13 = MSTR    //Pin RB13 Ownership Bits->Main core owns pin.
 #pragma config CPRB14 = SLV1    //Pin RB14 Ownership Bits->Secondary core owns pin.
-#pragma config CPRB15 = MSTR    //Pin RB15 Ownership Bits->Main core owns pin.
+#pragma config CPRB15 = SLV1    //Pin RB15 Ownership Bits->Secondary core owns pin.
 
 // FCFGPRC0
 #pragma config CPRC0 = MSTR    //Pin RC0 Ownership Bits->Main core owns pin.
@@ -202,16 +202,22 @@
 #include "clock.h"
 #include "system.h"
 #include "system_types.h"
+#include "sccp1_tmr.h"
+#include "sccp2_tmr.h"
 #include "interrupt_manager.h"
 #include "traps.h"
 #include "slave_typedef.h"
 #include "slave1.h"
+#include "sccp3_compare.h"
 
 void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
-    INTERRUPT_Initialize();
     CLOCK_Initialize();
+    INTERRUPT_Initialize();
+    SCCP3_COMPARE_Initialize();
+    SCCP1_TMR_Initialize();
+    SCCP2_TMR_Initialize();
     SLAVE1_Initialize();
     INTERRUPT_GlobalEnable();
     SYSTEM_CORCONModeOperatingSet(CORCON_MODE_PORVALUES);

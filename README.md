@@ -38,6 +38,12 @@ What it does:
 - Master Core
   - 8 Mhz external Clock, 180 MHz (90 MIPS) Core clock
   - toggles `RE0_LED1` every 50ms using Delay
+  - toggles `RB2` on every CCP1 interrupt (~ 10 kHz)
+  - toggles `RC6` on every CCP2 interrupt (~ 100 kHz)
+  - rises `RB7` on Address Error trap
+  - toggles `RC8` on every HW division 
+  - toggles `RC9` at 1 Mhz rate using SCCP3/PWM in toggle mode.
+    NOTE: Digilent Logic Base must be 1us/div or shorter to measure this frequency with enough precision.
 - Slave Core
   - 8 Mhz external Clock, 200 MHz (100 MIPS) Core clock
   - debug messages on UART (`RC10_RXB` PIC Input, `RC11_TXB` PIC Output)
@@ -45,8 +51,14 @@ What it does:
       no parity, no flow control
   - toggles LED2 around every 1s using main loop Delay
   - rotating RGB LED around every second
-  - toggle `RC7_ANA` on every CCP1 interrupt
-  - toggle `RD4_RSTA` on every CCP2 interrupt
+  - toggle `RC7_ANA` on every CCP1 interrupt (~ 10 kHz)
+  - toggle `RD4_RSTA` on every CCP2 interrupt (~ 100 kHz)
+  - rise `RD3` on Address Error trap
+  - toggles `RB10` on every HW division
+  - toggles `RD6` main on entering outer `while(1){ ... }` loop
+  - toggles `RC3` after Rotate RGB LEDs
+  - toggles `RB15` at 1 Mhz rate using SCCP3/PWM in toggle mode.
+    NOTE: Digilent Logic Base must be 1us/div or shorter to measure this frequency with enough precision.
 
 Both cores:
 - permanently lit LED1 (for Master) or LED2 (for Slave) in case of TRAP.

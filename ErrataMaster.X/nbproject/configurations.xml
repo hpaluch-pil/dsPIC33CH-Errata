@@ -19,6 +19,9 @@
         <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/slave1.h</itemPath>
         <itemPath>mcc_generated_files/slave_typedef.h</itemPath>
+        <itemPath>mcc_generated_files/sccp2_tmr.h</itemPath>
+        <itemPath>mcc_generated_files/sccp1_tmr.h</itemPath>
+        <itemPath>mcc_generated_files/sccp3_compare.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -39,6 +42,9 @@
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/traps.c</itemPath>
         <itemPath>mcc_generated_files/slave1.c</itemPath>
+        <itemPath>mcc_generated_files/sccp2_tmr.c</itemPath>
+        <itemPath>mcc_generated_files/sccp1_tmr.c</itemPath>
+        <itemPath>mcc_generated_files/sccp3_compare.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -286,6 +292,7 @@
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.configurationmemory" value="true"/>
         <property key="memories.dataflash" value="true"/>

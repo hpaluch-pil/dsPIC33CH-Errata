@@ -52,4 +52,10 @@
 */
 void INTERRUPT_Initialize (void)
 {
+    //    CCTI: CCP2 Timer Event
+    //    Priority: 2
+        IPC6bits.CCT2IP = 2;
+    //    CCTI: CCP1 Timer Event
+    //    Priority: 1
+        IPC1bits.CCT1IP = 1;
 }

@@ -14,4 +14,6 @@ Makefile-*
 # files created when Tracing is enabled
 *.log
 *.inx
-
+# PhotoScape
+*.db
+Originals/

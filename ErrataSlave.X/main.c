@@ -51,6 +51,7 @@
 #include "mcc_generated_files/system.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/sccp1_tmr.h"
+#include "mcc_generated_files/uart1.h"
 #include <stdio.h> // printf(3)
 
 
@@ -70,8 +71,10 @@ void my_fatal_error(int err)
     fatal_error_code = err;
     // set RGB LED to RED
     RD5_RGB_RED_SetHigh(); RD7_RGB_GREEN_SetLow(); RB14_RGB_BLUE_SetLow();
-    // print error on UART
-    printf("\r\nERROR: %s:%d err=%d\r\n",__func__,__LINE__,err);
+    // print error on UART, but avoid using PSV (possible source of another error)
+    UART1_Write('@');
+    UART1_Write('0'+err);
+
     // and loop forever
     while(1){
         Nop(); // put BP here
